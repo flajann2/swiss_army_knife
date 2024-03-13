@@ -2,17 +2,23 @@ defmodule SwissArmyKnife do
   @moduledoc """
   Documentation for `SwissArmyKnife`.
   """
+  import IO
 
+  alias SAK.Cli
+  
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> SwissArmyKnife.hello()
-      :world
-
+  TODO: Document!
   """
-  def hello do
-    :world
+  def main(args) do
+    args |> Cli.parse_args |> process
   end
+
+  def process() do
+  end
+
+  def process(%Optimus.ParseResult{}) do
+    puts "No arguments given"
+    :error
+  end  
+
 end
