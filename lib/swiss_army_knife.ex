@@ -3,14 +3,24 @@ defmodule SwissArmyKnife do
   Documentation for `SwissArmyKnife`.
   """
   import IO
+  #import Optimus
 
-  alias SAK.Cli
+  #alias Optimus, as: Cli
+  
+  use Application
   
   @doc """
   TODO: Document!
   """
-  def main(args) do
-    args |> Cli.parse_args |> process
+  def start(_type, args \\ []) do
+    #args |> Cli.parse_args |> process
+    puts "\n*** start called ***\n"
+    puts args
+  end
+
+  def main(args \\ []) do
+    puts "\n*** main called ***\n"
+    puts args
   end
 
   def process() do

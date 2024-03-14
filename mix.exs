@@ -6,15 +6,23 @@ defmodule SwissArmyKnife.MixProject do
       app: :swiss_army_knife,
       version: "0.0.0",
       elixir: "~> 1.16",
+      escript:
+      [
+        main_module: SwissArmyKnife,
+        name: "sak",
+        path: "./bin/sak"
+      ], 
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
   end
-
+ 
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      mod: {SwissArmyKnife, []},
+      extra_applications: [:logger],
+      # applications: [:mix]
     ]
   end
 
