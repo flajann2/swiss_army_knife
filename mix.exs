@@ -22,7 +22,6 @@ defmodule SwissArmyKnife.MixProject do
     [
       mod: {SwissArmyKnife, []},
       extra_applications: [:logger],
-      # applications: [:mix]
     ]
   end
 
