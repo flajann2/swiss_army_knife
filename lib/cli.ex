@@ -1,11 +1,8 @@
 defmodule CLI do
-  import IO
-  #import Optimus
+  #import IO
 
   alias Optimus, as: Cli
   alias SwissArmyKnife, as: Pro
-
-  use Application
 
   def main(args) do
     Cli.new!(
@@ -65,16 +62,8 @@ defmodule CLI do
           about: "Get your Internet-facing IP and general location.",
                   ],
         kernel: [
-          name: "kernal",
+          name: "kernel",
           about: "Check your running kernel against the newly installed ones",
-          args: [
-            file: [
-              value_name: "FILE",
-              help: "File with raw data to validate",
-              required: true,
-              parser: :string
-            ]
-          ]
         ],
         
       ]

@@ -3,32 +3,38 @@ defmodule SwissArmyKnife do
   Documentation for `SwissArmyKnife`.
   """
   import IO
-  use Application
-  
+  alias System, as: Sy
+  alias HTTPoison, as: Hp
+  alias Jason, as: Json
   @doc """
   TODO: Document!
   """
-  def start(_type, args) do
-    #args |> Cli.parse_args |> process
-    puts "\n*** start called ***\n"
-    IO.inspect args
-    Supervisor.start_link([], strategy: :one_for_one)
+  def process({[:extip], _}) do
+    getip1 = "https://icanhazip.com"
+    getip2 = "https://ipv4.jsonip.com"
+    getip3 = "https://ipv6.jsonip.com"
+    getgeo = "http://ip-api.com/json/"
+
+    {:ok, hip} = Hp.get(getip2)
+    puts "*** hip ***"
+    IO.inspect hip.body
+    
+    {:ok, jip} = Json.decode hip.body
+    puts "*** jip ***"
+    IO.inspect jip["ip"]
+
+    {:ok, geo} = Hp.get(getgeo <> jip["ip"])
+    puts "*** geo ***"
+    {:ok, meo} = geo.body |> Json.decode
+    IO.inspect meo
   end
 
-  process({[:extip], _}) do
-    puts "extip"
-  end
-
-  process({[:kernel], _}) do
+  def process({[:kernel], _}) do
     puts "kernel"
   end
 
-  def process() do
-  end
-
-  def process(%Optimus.ParseResult{}) do
+  def process({[_], %Optimus.ParseResult{}}) do
     puts "No arguments given"
     :error
-  end  
-   
+  end    
 end
