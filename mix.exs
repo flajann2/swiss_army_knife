@@ -18,19 +18,20 @@ defmodule SwissArmyKnife.MixProject do
   end
  
   # Run "mix help compile.app" to learn about applications.
-  #def application do
-  #  [
-  #    mod: {SwissArmyKnife, []},
-  #    extra_applications: [:logger],
-  #  ]
-  #end
-
+  # def application do
+  #   [
+  #     mod: {SwissArmyKnife, []},
+  #     extra_applications: [:logger],
+  #     env: [db_host: "localhost"],
+  #   ]
+  # end
+  
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:optimus, "~> 0.5.0"},
       {:httpoison, "~> 2.2"},
-      {:jason, "~> 1.4"},
+      {:jason, "~> 1.4"}
     ]
   end
 end

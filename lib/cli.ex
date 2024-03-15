@@ -67,7 +67,7 @@ defmodule CLI do
         ],
         
       ]
-    ) |> Cli.parse!(args) |> Pro.process |> IO.inspect 
+    ) |> Cli.parse!(args) |> Pro.process
   end
 
 end
