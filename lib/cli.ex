@@ -60,7 +60,15 @@ defmodule CLI do
         extip: [
           name: "extip",
           about: "Get your Internet-facing IP and general location.",
-                  ],
+          flags: [
+            ipv6: [
+              value_name: "IPV6",
+              short: "-i",
+              long: "--ipv6",
+              multiple: false,
+            ],
+          ],
+        ],
         kernel: [
           name: "kernel",
           about: "Check your running kernel against the newly installed ones",
