@@ -8,7 +8,7 @@
    #+BEGIN_EXAMPLE elixir
      def deps do
        [
-         {:swiss_army_knife, "~> 0.1.0"}
+         {:swiss_army_knife, "~> 0.0.1"}
        ]
      end
    #+END_EXAMPLE

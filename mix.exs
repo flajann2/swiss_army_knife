@@ -4,7 +4,7 @@ defmodule SwissArmyKnife.MixProject do
   def project do
     [
       app: :swiss_army_knife,
-      version: "0.0.0",
+      version: "0.0.1",
       elixir: "~> 1.16",
       escript:
       [
@@ -16,15 +16,6 @@ defmodule SwissArmyKnife.MixProject do
       deps: deps()
     ]
   end
- 
-  # Run "mix help compile.app" to learn about applications.
-  # def application do
-  #   [
-  #     mod: {SwissArmyKnife, []},
-  #     extra_applications: [:logger],
-  #     env: [db_host: "localhost"],
-  #   ]
-  # end
   
   # Run "mix help deps" to learn about dependencies.
   defp deps do

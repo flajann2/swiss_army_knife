@@ -1,10 +1,10 @@
 defmodule SwissArmyKnife do
   import IO
-  use Application
   
   alias System, as: Sy
   alias HTTPoison, as: Hp
   alias Jason, as: Json
+  #import Optimus
 
   def process({[:extip], o}) do
     # The following are defined here since this code
@@ -25,9 +25,9 @@ defmodule SwissArmyKnife do
   end
 
   def process({[:kernel], _}) do
-    {kernel,    0}     = System.cmd("uname", ["-r"])
-    {installed, 0}     = System.cmd("pacman", ["-Q", "linux"])
-    {installed_lts, 0} = System.cmd("pacman", ["-Q", "linux-lts"])
+    {kernel,    0}     = Sy.cmd("uname", ["-r"])
+    {installed, 0}     = Sy.cmd("pacman", ["-Q", "linux"])
+    {installed_lts, 0} = Sy.cmd("pacman", ["-Q", "linux-lts"])
 
     puts "      running: " <> String.trim kernel
     puts "    installed: " <> String.trim installed
@@ -35,8 +35,14 @@ defmodule SwissArmyKnife do
     :ok
   end
 
-  def process({[_], %Optimus.ParseResult{}}) do
-    puts "No arguments given"
+  def process({[:sleep], o}) do
+    puts "**** sleep ****"
+    IO.inspect o
+    :ok
+  end
+  
+  def process(%Optimus.ParseResult{args: %{}}) do
+    puts "Please run 'sak --help' for documentation."
     :error
-  end    
+  end
 end
