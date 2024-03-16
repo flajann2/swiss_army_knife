@@ -22,7 +22,7 @@ defmodule SwissArmyKnife.MixProject do
     [
       {:optimus, "~> 0.5.0"},
       {:httpoison, "~> 2.2"},
-      {:jason, "~> 1.4"}
+      {:jason, "~> 1.4"},
     ]
   end
 end

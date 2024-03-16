@@ -4,7 +4,6 @@ defmodule SwissArmyKnife do
   alias System, as: Sy
   alias HTTPoison, as: Hp
   alias Jason, as: Json
-  #import Optimus
 
   def process({[:extip], o}) do
     # The following are defined here since this code
@@ -34,15 +33,15 @@ defmodule SwissArmyKnife do
     puts "installed LTS: " <> String.trim installed_lts
     :ok
   end
-
-  def process({[:sleep], o}) do
-    puts "**** sleep ****"
-    IO.inspect o
+ 
+  def process({[:sleep], _}) do
+    Sy.cmd("systemctl", ["suspend", "-i"]) 
     :ok
   end
-  
+
   def process(%Optimus.ParseResult{args: %{}}) do
-    puts "Please run 'sak --help' for documentation."
+    puts "\n   Welcome to Swiss Army Knife by Fred Mitchell."
+    puts "   Please run 'sak --help' for documentation."
     :error
   end
 end
