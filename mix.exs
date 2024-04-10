@@ -13,12 +13,6 @@ defmodule SwissArmyKnife.MixProject do
       ], 
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      # releases: [
-      #   sak: [
-      #     include_executables_for: [:unix],
-      #     applications: [runtime_tools: :permanent]
-      #   ]
-      # ]
     ]
   end
   
