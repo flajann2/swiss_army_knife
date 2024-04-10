@@ -6,8 +6,7 @@ defmodule SwissArmyKnife.MixProject do
       app: :swiss_army_knife,
       version: "0.0.1",
       elixir: "~> 1.16",
-      escript:
-      [
+      escript: [
         main_module: SwissArmyKnife.CLI,
         name: "sak",
         path: "./bin/sak"
