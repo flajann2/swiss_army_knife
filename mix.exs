@@ -8,12 +8,18 @@ defmodule SwissArmyKnife.MixProject do
       elixir: "~> 1.16",
       escript:
       [
-        main_module: CLI,
+        main_module: SwissArmyKnife.CLI,
         name: "sak",
         path: "./bin/sak"
       ], 
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      # releases: [
+      #   sak: [
+      #     include_executables_for: [:unix],
+      #     applications: [runtime_tools: :permanent]
+      #   ]
+      # ]
     ]
   end
   
@@ -23,6 +29,21 @@ defmodule SwissArmyKnife.MixProject do
       {:optimus, "~> 0.5.0"},
       {:httpoison, "~> 2.2"},
       {:jason, "~> 1.4"},
+      {:burrito, github: "burrito-elixir/burrito"},
+    ]
+  end
+
+  def releases do
+    [
+      sak: [
+        steps: [:assemble, &Burrito.wrap/1],
+        burrito: [
+          targets: [
+            macos: [os: :darwin, cpu: :x86_64],
+            linux: [os: :linux, cpu: :x86_64],
+          ]
+        ]
+      ]
     ]
   end
 end

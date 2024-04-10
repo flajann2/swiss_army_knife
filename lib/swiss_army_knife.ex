@@ -1,4 +1,4 @@
-defmodule SwissArmyKnife do
+defmodule SwissArmyKnife.Pro do
   import IO
   
   alias System, as: Sy
@@ -40,8 +40,11 @@ defmodule SwissArmyKnife do
   end
 
   def process(%Optimus.ParseResult{args: %{}}) do
-    puts "\n   Welcome to Swiss Army Knife by Fred Mitchell."
-    puts "   Please run 'sak --help' for documentation."
+    puts """
+    
+        Welcome to Swiss Army Knife by Fred Mitchell.
+        Please run 'sak --help' for documentation.
+    """
     :error
   end
 end

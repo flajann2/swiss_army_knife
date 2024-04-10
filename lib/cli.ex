@@ -1,6 +1,6 @@
-defmodule CLI do
+defmodule SwissArmyKnife.CLI do
   alias Optimus, as: Cli
-  alias SwissArmyKnife, as: Pro
+  alias SwissArmyKnife.Pro, as: Pro
 
   def main(args) do
     Cli.new!(
