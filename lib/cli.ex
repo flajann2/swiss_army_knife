@@ -24,6 +24,12 @@ defmodule SwissArmyKnife.CLI do
           name: "extip",
           about: "Get your Internet-facing IP and general location.",
           flags: [
+            nolocation: [
+              value_name: "NoLoc",
+              short: "-n",
+              long: "--nolocation",
+              multiple: false,
+            ],
             ipv6: [
               value_name: "IPV6",
               short: "-i",
@@ -39,6 +45,24 @@ defmodule SwissArmyKnife.CLI do
         sleep: [
           name: "sleep",
           about: "Put your computer instantly to sleep",
+        ],
+        zfsclean: [
+          name: "zfs",
+          about: "Clean prior zfs kernels",
+          flags: [
+            list: [
+              value_name: "list",
+              short: "-l",
+              long: "--list",
+              multiple: false,
+            ],
+            clean: [
+              value_name: "clean",
+              short: "-c",
+              long: "--clean",
+              multiple: false,
+             ],
+           ], 
         ],
       ]
     ) |> Cli.parse!(args) |> Pro.process

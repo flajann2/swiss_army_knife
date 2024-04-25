@@ -13,13 +13,13 @@ defmodule SwissArmyKnife.Pro do
     ipv6 = "https://ipv6.jsonip.com"
     geo  = "http://ip-api.com/json/"
 
-    %{ipv6: ipv6_f, verbosity: _verbosity_f} = o.flags
+    %{ipv6: ipv6_f, nolocation: noloc_f, verbosity: _verbosity_f} = o.flags
     
     {:ok, hip}  = if ipv6_f, do: Hp.get(ipv6), else: Hp.get(ipv4)
     {:ok, jip}  = hip.body |> Json.decode
     {:ok, info} = geo <> jip["ip"] |> Hp.get
     {:ok, meo}  = info.body |> Json.decode
-    puts jip["ip"] <> ", " <> meo["city"] <> ", " <> meo["country"] <> " -- " <> meo["countryCode"]
+    puts jip["ip"] <> if noloc_f, do: "", else: ", " <> meo["city"] <> ", " <> meo["country"] <> " -- " <> meo["countryCode"]
     :ok
   end
 
@@ -36,6 +36,10 @@ defmodule SwissArmyKnife.Pro do
  
   def process({[:sleep], _}) do
     Sy.cmd("systemctl", ["suspend", "-i"]) 
+    :ok
+  end
+  
+  def process({[:zfs], _}) do
     :ok
   end
 
