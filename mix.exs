@@ -5,12 +5,15 @@ defmodule SwissArmyKnife.MixProject do
     [
       app: :swiss_army_knife,
       version: "0.0.1",
-      elixir: "~> 1.16",
+      elixir: "~> 1.17.1",
       escript: [
         main_module: SwissArmyKnife.CLI,
         name: "sak",
-        path: "./bin/sak"
+        path: "./bin/sak",
+        embed_elixir: true,
+        emu_args: "-noshell"
       ], 
+      # env: [escript_script: ".bin/sak"],
       start_permanent: Mix.env() == :prod,
       deps: deps(),
     ]
@@ -29,11 +32,14 @@ defmodule SwissArmyKnife.MixProject do
   def releases do
     [
       sak: [
-        steps: [:assemble, &Burrito.wrap/1],
+        include_executables_for: [:unix, :windows],
+        applications: [runtime_tools: :permanent],
+        steps: [:assemble, &Burrito.wrap/1, :tar],
         burrito: [
           targets: [
-            macos: [os: :darwin, cpu: :x86_64],
-            linux: [os: :linux, cpu: :x86_64],
+            linux:   [os: :linux, cpu: :x86_64],
+            macos:   [os: :darwin, cpu: :x86_64],
+            windows: [os: :windows, cpu: :x86_64]
           ]
         ]
       ]

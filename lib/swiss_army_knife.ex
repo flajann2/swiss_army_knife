@@ -40,6 +40,7 @@ defmodule SwissArmyKnife.Pro do
   end
   
   def process({[:zfs], _}) do
+    puts "Not Implemented Yet."
     :ok
   end
 

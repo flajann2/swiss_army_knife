@@ -3,4 +3,7 @@
    + I needed to "hard code" in the URLs, because it does not make
      sense to put them in a resource file, since there is not gaurantee
      alternate endpoints will have the same semantics.
+   + Erlang will always be a dependency. No way around it. Cannot be
+     so easily embedded into the escript. 
+
 
